@@ -80,7 +80,38 @@ public class ResponseHandler {
                     e.printStackTrace();
                 }
                 replyWithHtmlMarkup(chatId,"<b>Bem cadastrado com sucesso!</b>");
+                replyWithHtmlMarkup(chatId,"Para voltar ao menu /start");
                 salvarObjBem(chatId);
+            }else{
+                if(buttonId.contains("findLocalizacao") && (chatStates.get(chatId) == ChatStateMachine.ESPERANDO_LOCALIZACAO_BUSCA_BEM)){
+                    try {
+                        localizacaoTemp = localizacaoRepository.findById(Integer.parseInt(buttonId.replaceAll("[\\D]", ""))); //substitui tudo que não for digito com um espaço vazio para fazer o parseInt
+                    } catch (LocalizacaoRepository.LocalizacaoNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    replyWithHtmlMarkup(chatId, "Os bens dessa localização podem ser encontrados abaixo:");
+                    List<Bem> bens = null;
+                    try {
+                        bens = bemRepository.findByLocal(localizacaoTemp.getNome());
+                        for(Bem bem : bens){
+                            replyWithHtmlMarkup(chatId, bem.toString());
+                        }
+                    } catch (BemRepository.BemNotFoundException e) {
+                        e.printStackTrace();
+                        replyWithHtmlMarkup(chatId,"<b>Não existem bens cadastrados nesta localização.</b>");
+                    }
+                    replyWithBackButton(chatId);
+                }
+                if(buttonId.contains("findCategoria") && (chatStates.get(chatId) == ChatStateMachine.ESPERANDO_CATEGORIA_BEM)){
+                    try{
+                        categoriaTemp = categoriaRepository.findById(Integer.parseInt(buttonId.replaceAll("[\\D]", ""))); //substitui tudo que não for digito com um espaço vazio para fazer o parseInt
+                        chatStates.put(chatId, ChatStateMachine.ESPERANDO_LOCALIZACAO_BEM);
+                        replyWithInlineKeyboard(chatId, "Selecione abaixo a localização do bem:", KeyboardFactory.ReplyKeyboardWithLocalizacoes());
+                    }catch (CategoriaRepository.CategoriaNotFoundException e){
+                        e.printStackTrace();
+                    }
+                }
             }
         }else{
             switch (buttonId){
@@ -336,6 +367,7 @@ public class ResponseHandler {
                 break;
             case ESPERANDO_DESCRICAO_LOCALIZACAO:
                 this.commandsHistory.add(name);
+                replyWithHtmlMarkup(chatId, "Localização Adicionada!\nVoltar ao menu /start" );
                 salvarObjLocalizacao(chatId);
                 break;
             case ESPERANDO_CODIGO_BUSCA_BEM:
