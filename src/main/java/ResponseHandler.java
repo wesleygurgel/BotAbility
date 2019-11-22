@@ -81,47 +81,6 @@ public class ResponseHandler {
                 }
                 replyWithHtmlMarkup(chatId,"<b>Bem cadastrado com sucesso!</b>");
                 salvarObjBem(chatId);
-            }else{
-                if(buttonId.contains("findLocalizacao") && (chatStates.get(chatId) == ChatStateMachine.ESPERANDO_LOCALIZACAO_PARA_MOVER_BEM)){
-                    try {
-                        bemService.changeLocation(bemTemp.getId(), Integer.parseInt(buttonId.replaceAll("[\\D]", "")) );
-                    } catch (BemRepository.BemNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (LocalizacaoRepository.LocalizacaoNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    replyWithHtmlMarkup(chatId, "O bem foi movido com sucesso para <b>"+bemTemp.getLocalizacao().getNome()+"</b>.");
-                    replyWithBackButton(chatId);
-                }
-                if(buttonId.contains("findLocalizacao") && (chatStates.get(chatId) == ChatStateMachine.ESPERANDO_LOCALIZACAO_BUSCA_BEM)){
-                    try {
-                        localizacaoTemp = localizacaoRepository.findById(Integer.parseInt(buttonId.replaceAll("[\\D]", ""))); //substitui tudo que não for digito com um espaço vazio para fazer o parseInt
-                    } catch (LocalizacaoRepository.LocalizacaoNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
-                    replyWithHtmlMarkup(chatId, "Os bens dessa localização podem ser encontrados abaixo:");
-                    List<Bem> bens = null;
-                    try {
-                        bens = bemRepository.findByLocal(localizacaoTemp.getNome());
-                        for(Bem bem : bens){
-                            replyWithHtmlMarkup(chatId, bem.toString());
-                        }
-                    } catch (BemRepository.BemNotFoundException e) {
-                        e.printStackTrace();
-                        replyWithHtmlMarkup(chatId,"<b>Não existem bens cadastrados nesta localização.</b>");
-                    }
-                    replyWithBackButton(chatId);
-                }
-                if(buttonId.contains("findCategoria") && (chatStates.get(chatId) == ChatStateMachine.ESPERANDO_CATEGORIA_BEM)){
-                    try{
-                        categoriaTemp = categoriaRepository.findById(Integer.parseInt(buttonId.replaceAll("[\\D]", ""))); //substitui tudo que não for digito com um espaço vazio para fazer o parseInt
-                        chatStates.put(chatId, ChatStateMachine.ESPERANDO_LOCALIZACAO_BEM);
-                        replyWithInlineKeyboard(chatId, "Selecione abaixo a localização do bem:", KeyboardFactory.ReplyKeyboardWithLocalizacoes());
-                    }catch (CategoriaRepository.CategoriaNotFoundException e){
-                        e.printStackTrace();
-                    }
-                }
             }
         }else{
             switch (buttonId){
@@ -168,10 +127,6 @@ public class ResponseHandler {
                 case Constants.BUSCAR_BEM_DESCRICAO:
                     chatStates.put(chatId, ChatStateMachine.ESPERANDO_DESCRICAO_BUSCA_BEM);
                     replyEsperandoDescricaoParaBuscar(chatId);
-                    break;
-                case Constants.MOVIMENTAR_BEM:
-                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_PARA_MOVER_BEM);
-                    replyEsperandoCodigoParaBuscar(chatId);
                     break;
                 case Constants.GERAR_RELATORIO:
                     chatStates.put(chatId, ChatStateMachine.GERANDO_RELATORIO);
@@ -420,11 +375,6 @@ public class ResponseHandler {
                     e.printStackTrace();
                 }
                 replyWithBackButton(chatId);
-                break;
-            case ESPERANDO_CODIGO_PARA_MOVER_BEM:
-                findAndSetBemTemp(chatId, name);
-                replyWithInlineKeyboard(chatId, "Para onde deseja movimentar o bem <b>"+ bemTemp.getNome() +"</b>?", KeyboardFactory.ReplyKeyboardWithLocalizacoes());
-                chatStates.put(chatId, ChatStateMachine.ESPERANDO_LOCALIZACAO_PARA_MOVER_BEM);
                 break;
         }
     }

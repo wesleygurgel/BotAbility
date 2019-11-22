@@ -19,17 +19,6 @@ public class BemService {
         localizacaoRepository = new LocalizacaoRepository(conn);
     }
 
-    public Bem changeLocation( Integer id_bem , Integer newLocal) throws BemRepository.BemNotFoundException, LocalizacaoRepository.LocalizacaoNotFoundException {
-        Bem bem =  bemRepository.findById(id_bem);
-        Localizacao local = localizacaoRepository.findById(newLocal);
-        if(local != null){
-            bem.setLocalizacao(local);
-            bemRepository.update(bem);
-            return bem;
-        }
-        return null;
-    }
-
     public List<Bem> getRelatorio(){
         return  bemRepository.findallOrder();
     }

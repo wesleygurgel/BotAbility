@@ -47,7 +47,6 @@ public class KeyboardFactory {
         rowInline7.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_NOME).setCallbackData(Constants.BUSCAR_BEM_NOME));
 
         rowInline8.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_DESCRICAO).setCallbackData(Constants.BUSCAR_BEM_DESCRICAO));
-        rowInline9.add(new InlineKeyboardButton().setText(Constants.MOVIMENTAR_BEM).setCallbackData(Constants.MOVIMENTAR_BEM));
         rowInline9.add(new InlineKeyboardButton().setText(Constants.GERAR_RELATORIO).setCallbackData(Constants.GERAR_RELATORIO));
 
 
