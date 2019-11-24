@@ -22,4 +22,5 @@ public interface Constants {
     String BUSCAR_BEM_NOME = "Buscar bem por nome";
     String BUSCAR_BEM_DESCRICAO = "Buscar bem por descrição";
     String GERAR_RELATORIO = "Gerar relatório";
+    String APAGAR_BEM = "Apagar bem";
 }

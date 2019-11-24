@@ -311,6 +311,24 @@ public class BemRepository {
         return null;
     }
 
+
+    public void deleteByID(Integer id) throws BemNotFoundException{
+        String sql = "DELETE * "
+                + "FROM bem WHERE id = ?";
+        try {
+            conexaoSQL.connect();
+            PreparedStatement pstmt  = conexaoSQL.getConn().prepareStatement(sql);
+            pstmt.setInt(1,id);
+            pstmt.executeQuery();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new BemNotFoundException();
+        }finally {
+            conexaoSQL.desconect();
+        }
+    }
+
     public static class BemNotFoundException extends Exception {
         public BemNotFoundException() {
             super();

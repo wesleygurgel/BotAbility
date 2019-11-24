@@ -159,12 +159,19 @@ public class ResponseHandler {
                     chatStates.put(chatId, ChatStateMachine.ESPERANDO_DESCRICAO_BUSCA_BEM);
                     replyEsperandoDescricaoParaBuscar(chatId);
                     break;
+                case Constants.APAGAR_BEM:
+                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_BEM);
+                    replyEsperandoCodigoApagarBem(chatId);
                 case Constants.GERAR_RELATORIO:
                     chatStates.put(chatId, ChatStateMachine.GERANDO_RELATORIO);
                     replyGerarRelatorio(chatId);
                     break;
             }
         }
+    }
+
+    private void replyEsperandoCodigoApagarBem(long chatId) {
+        replyWithHtmlMarkup(chatId, "<b>Digite o ID do bem que deseja apagar<b>");
     }
 
     /**
@@ -384,6 +391,9 @@ public class ResponseHandler {
                 chatStates.put(chatId, ChatStateMachine.ESPERANDO_CATEGORIA_BEM);
                 replyWithInlineKeyboard(chatId, "Selecione abaixo a categoria do bem:", KeyboardFactory.ReplyKeyboardWithCategorias());
                 break;
+            case ESPERANDO_CODIGO_APAGAR_BEM:
+                this.commandsHistory.add(name);
+
             case ESPERANDO_NOME_BUSCA_BEM:
                 try{
                     List<Bem> bens = bemRepository.findByName(name);

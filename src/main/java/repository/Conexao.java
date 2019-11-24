@@ -20,7 +20,7 @@ public class Conexao {
         return conexao;
     }
 
-    private  Connection conn ;
+    private Connection conn ;
 
     /**
      * Cria conexao com o banco '/'.
