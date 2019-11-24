@@ -27,6 +27,7 @@ public class KeyboardFactory {
         List<InlineKeyboardButton> rowInline7 = new ArrayList<>();
         List<InlineKeyboardButton> rowInline8 = new ArrayList<>();
         List<InlineKeyboardButton> rowInline9 = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline10 = new ArrayList<>();
 
 
         rowInline1.add(new InlineKeyboardButton().setText(Constants.CADASTRAR_BEM).setCallbackData(Constants.CADASTRAR_BEM));
@@ -48,6 +49,7 @@ public class KeyboardFactory {
 
         rowInline8.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_DESCRICAO).setCallbackData(Constants.BUSCAR_BEM_DESCRICAO));
         rowInline9.add(new InlineKeyboardButton().setText(Constants.GERAR_RELATORIO).setCallbackData(Constants.GERAR_RELATORIO));
+        rowInline10.add(new InlineKeyboardButton().setText(Constants.APAGAR_BEM).setCallbackData(Constants.APAGAR_BEM));
 
 
 //        rowInline.add(new InlineKeyboardButton().setText(Constants.TRAINING_TODAY).setCallbackData(Constants.TRAINING_TODAY));
@@ -61,6 +63,7 @@ public class KeyboardFactory {
         rowsInline.add(rowInline7);
         rowsInline.add(rowInline8);
         rowsInline.add(rowInline9);
+        rowsInline.add(rowInline10);
         inlineKeyboard.setKeyboard(rowsInline);
         return inlineKeyboard;
     }

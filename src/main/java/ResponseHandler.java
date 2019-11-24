@@ -159,13 +159,13 @@ public class ResponseHandler {
                     chatStates.put(chatId, ChatStateMachine.ESPERANDO_DESCRICAO_BUSCA_BEM);
                     replyEsperandoDescricaoParaBuscar(chatId);
                     break;
-                case Constants.APAGAR_BEM:
-                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_BEM);
-                    replyEsperandoCodigoApagarBem(chatId);
                 case Constants.GERAR_RELATORIO:
                     chatStates.put(chatId, ChatStateMachine.GERANDO_RELATORIO);
                     replyGerarRelatorio(chatId);
                     break;
+                case Constants.APAGAR_BEM:
+                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_BEM);
+                    replyEsperandoCodigoApagarBem(chatId);
             }
         }
     }
@@ -184,14 +184,6 @@ public class ResponseHandler {
             replyWithHtmlMarkup(chatId,bem.toString());
         }
         replyWithBackButton(chatId);
-    }
-
-    /**
-     * Responde com o texto "Qual o código do bem que você deseja fazer a movimentação?".
-     * @param chatId
-     */
-    public void replyEsperandoCodigoParaBuscar(long chatId){
-        replyWithHtmlMarkup(chatId,"Qual o código do bem que você deseja fazer a movimentação?");
     }
 
     /**
@@ -392,8 +384,8 @@ public class ResponseHandler {
                 replyWithInlineKeyboard(chatId, "Selecione abaixo a categoria do bem:", KeyboardFactory.ReplyKeyboardWithCategorias());
                 break;
             case ESPERANDO_CODIGO_APAGAR_BEM:
-                this.commandsHistory.add(name);
-
+                deleteCodigoBem(chatId,name);
+                replyWithBackButton(chatId);
             case ESPERANDO_NOME_BUSCA_BEM:
                 try{
                     List<Bem> bens = bemRepository.findByName(name);
@@ -418,6 +410,28 @@ public class ResponseHandler {
                 }
                 replyWithBackButton(chatId);
                 break;
+        }
+    }
+
+    private void deleteCodigoBem(long chatId, String unformattedId) {
+
+        try {
+            try{
+                bemRepository.deleteByID(Integer.parseInt(unformattedId.replaceAll("[\\D]", "")));
+                sender.execute(new SendMessage()
+//                        .setText(bemTemp.toString())
+                        .enableHtml(true)
+                        .setChatId(chatId)
+                );
+            }catch (BemRepository.BemNotFoundException e){
+                sender.execute(new SendMessage()
+                        .setText("<b>Não há nenhum bem com esse código.</b>")
+                        .enableHtml(true)
+                        .setChatId(chatId)
+                );
+            }
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
         }
     }
 
