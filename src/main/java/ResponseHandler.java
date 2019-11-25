@@ -431,22 +431,26 @@ public class ResponseHandler {
             try{
                 System.out.println("func1");
                 System.out.println(name);
-                if(bemRepository.findByLocal(name) == null){
-                    System.out.println("func2");
+                try{
+                    List<Bem> bens = null;
+                    System.out.println("criei minha list");
+                    bens = bemRepository.findByLocal(name);
+                    for(Bem bem : bens){
+                        replyWithHtmlMarkup(chatId, bem.toString());
+                    }
+                    replyWithHtmlMarkup(chatId,"Ainda existem bens relacionados a essa Localização");
+                }catch (BemRepository.BemNotFoundException e) {
+                    System.out.println("entrou no catch");
                     localizacaoRepository.deleteLocalizationByID(name);
-                    System.out.println("func3");
-                }else{
-                    replyWithHtmlMarkup(chatId, "\n <b>Ainda existem bens relacionados a essa localização .</b>\n ");
-                    waitingForCommand(chatId);
+                    replyWithHtmlMarkup(chatId, "Localização apagada com sucesso!");
                 }
+
             }catch (LocalizacaoRepository.LocalizacaoNotFoundException e){
                 sender.execute(new SendMessage()
                         .setText("<b>Não há nenhum bem com esse código.</b>")
                         .enableHtml(true)
                         .setChatId(chatId)
                 );
-            } catch (BemRepository.BemNotFoundException e) {
-
             }
         } catch (TelegramApiException e) {
             e.printStackTrace();
