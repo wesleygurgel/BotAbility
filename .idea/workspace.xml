@@ -5,9 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlfredoBot" beforeDir="false" afterPath="$PROJECT_DIR$/AlfredoBot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlfredoBot.wal.0" beforeDir="false" afterPath="$PROJECT_DIR$/AlfredoBot.wal.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResponseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/BemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/BemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/banco.db" beforeDir="false" afterPath="$PROJECT_DIR$/storage/banco.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ResponseHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResponseHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repository/BemRepository$BemNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repository/BemRepository$BemNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repository/BemRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repository/BemRepository.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,9 +63,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../patribot-telegram-master" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.46896553" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>

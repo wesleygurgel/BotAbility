@@ -171,7 +171,8 @@ public class ResponseHandler {
     }
 
     private void replyEsperandoCodigoApagarBem(long chatId) {
-        replyWithHtmlMarkup(chatId, "<b>Digite o ID do bem que deseja apagar<b>");
+        replyWithHtmlMarkup(chatId, "Digite o ID do bem que deseja apagar");
+        System.out.println("oi");
     }
 
     /**
@@ -385,6 +386,7 @@ public class ResponseHandler {
                 break;
             case ESPERANDO_CODIGO_APAGAR_BEM:
                 deleteCodigoBem(chatId,name);
+                System.out.println("oi3");
                 replyWithBackButton(chatId);
             case ESPERANDO_NOME_BUSCA_BEM:
                 try{
@@ -417,12 +419,8 @@ public class ResponseHandler {
 
         try {
             try{
+                System.out.println("func1");
                 bemRepository.deleteByID(Integer.parseInt(unformattedId.replaceAll("[\\D]", "")));
-                sender.execute(new SendMessage()
-//                        .setText(bemTemp.toString())
-                        .enableHtml(true)
-                        .setChatId(chatId)
-                );
             }catch (BemRepository.BemNotFoundException e){
                 sender.execute(new SendMessage()
                         .setText("<b>Não há nenhum bem com esse código.</b>")

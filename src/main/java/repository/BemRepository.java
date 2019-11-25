@@ -313,14 +313,17 @@ public class BemRepository {
 
 
     public void deleteByID(Integer id) throws BemNotFoundException {
-        String sql = "DELETE * "
-                + "FROM bem WHERE id = ?";
+        String sql = "DELETE FROM bem "
+                + "WHERE id = ?";
         try {
+            System.out.println("delete1");
             conexaoSQL.connect();
+            System.out.println("delete2");
             PreparedStatement pstmt = conexaoSQL.getConn().prepareStatement(sql);
+            System.out.println("delete3");
             pstmt.setInt(1, id);
-            ResultSet rs = pstmt.executeQuery();
-            System.out.println(rs + "isso aqui é o rs");
+            System.out.println("delete4");
+            pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
