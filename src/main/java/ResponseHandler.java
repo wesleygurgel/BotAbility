@@ -166,13 +166,21 @@ public class ResponseHandler {
                 case Constants.APAGAR_BEM:
                     chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_BEM);
                     replyEsperandoCodigoApagarBem(chatId);
+                    break;
+                case Constants.APAGAR_LOCALIZACAO:
+                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_LOC);
+                    replyEsperandoCodigoApagarLocalizacao(chatId);
+                    break;
             }
         }
     }
 
+    private void replyEsperandoCodigoApagarLocalizacao(long chatId) {
+        replyWithHtmlMarkup(chatId, "Digite o ID da localização que deseja apagar");
+    }
+
     private void replyEsperandoCodigoApagarBem(long chatId) {
         replyWithHtmlMarkup(chatId, "Digite o ID do bem que deseja apagar");
-        System.out.println("oi");
     }
 
     /**
@@ -384,10 +392,13 @@ public class ResponseHandler {
                 chatStates.put(chatId, ChatStateMachine.ESPERANDO_CATEGORIA_BEM);
                 replyWithInlineKeyboard(chatId, "Selecione abaixo a categoria do bem:", KeyboardFactory.ReplyKeyboardWithCategorias());
                 break;
+            case ESPERANDO_CODIGO_APAGAR_LOC:
+                deleteCodigoLocalizacao(chatId,name);
+                break;
             case ESPERANDO_CODIGO_APAGAR_BEM:
                 deleteCodigoBem(chatId,name);
-                System.out.println("oi3");
-                replyWithBackButton(chatId);
+                replyWithHtmlMarkup(chatId,"Bem apagado com Sucesso!\nPara voltar ao menu /start");
+                break;
             case ESPERANDO_NOME_BUSCA_BEM:
                 try{
                     List<Bem> bens = bemRepository.findByName(name);
@@ -415,8 +426,34 @@ public class ResponseHandler {
         }
     }
 
-    private void deleteCodigoBem(long chatId, String unformattedId) {
+    private void deleteCodigoLocalizacao(long chatId, String name) {
+        try {
+            try{
+                System.out.println("func1");
+                System.out.println(name);
+                if(bemRepository.findByLocal(name) == null){
+                    System.out.println("func2");
+                    localizacaoRepository.deleteLocalizationByID(name);
+                    System.out.println("func3");
+                }else{
+                    replyWithHtmlMarkup(chatId, "\n <b>Ainda existem bens relacionados a essa localização .</b>\n ");
+                    waitingForCommand(chatId);
+                }
+            }catch (LocalizacaoRepository.LocalizacaoNotFoundException e){
+                sender.execute(new SendMessage()
+                        .setText("<b>Não há nenhum bem com esse código.</b>")
+                        .enableHtml(true)
+                        .setChatId(chatId)
+                );
+            } catch (BemRepository.BemNotFoundException e) {
 
+            }
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteCodigoBem(long chatId, String unformattedId) {
         try {
             try{
                 System.out.println("func1");
