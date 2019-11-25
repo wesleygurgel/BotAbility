@@ -113,6 +113,26 @@ public class CategoriaRepository {
         }
     }
 
+    public void deleteCategoriaByName(String name) {
+        String sql = "DELETE FROM categoria "
+                + "WHERE nome = ?";
+        try {
+            System.out.println("delete11");
+            conexaoSQL.connect();
+            System.out.println("delete22");
+            PreparedStatement pstmt = conexaoSQL.getConn().prepareStatement(sql);
+            System.out.println("delete33");
+            pstmt.setString(1, name);
+            System.out.println("delete44");
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conexaoSQL.desconect();
+        }
+    }
+
     public static class CategoriaNotFoundException extends Exception {
         public CategoriaNotFoundException() {
             super();

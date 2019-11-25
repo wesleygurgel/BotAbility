@@ -35,5 +35,7 @@ public enum ChatStateMachine {
 
     MOVENDO_BEM,
     GERANDO_RELATORIO,
+
     ESPERANDO_CODIGO_APAGAR_LOC,
+    ESPERANDO_NOME_APAGAR_CAT,
 }

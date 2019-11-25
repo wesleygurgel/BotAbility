@@ -111,7 +111,7 @@ public class BemRepository {
      * Busca todos os dados na tabela'/'.
      * @return lista de bens
      */
-    public List<Bem> findall(){
+    public List<Bem> findall() {
         String sql = "SELECT * FROM bem";
         Localizacao local;
         Categoria categoria ;

@@ -5,6 +5,7 @@ import model.Localizacao;
 import org.telegram.abilitybots.api.db.DBContext;
 import org.telegram.abilitybots.api.sender.MessageSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import repository.BemRepository;
@@ -171,12 +172,20 @@ public class ResponseHandler {
                     chatStates.put(chatId, ChatStateMachine.ESPERANDO_CODIGO_APAGAR_LOC);
                     replyEsperandoCodigoApagarLocalizacao(chatId);
                     break;
+                case Constants.APAGAR_CATEGORIA:
+                    chatStates.put(chatId, ChatStateMachine.ESPERANDO_NOME_APAGAR_CAT);
+                    replyEsperandoNomeApagarCategoria(chatId);
+                    break;
             }
         }
     }
 
+    private void replyEsperandoNomeApagarCategoria(long chatId) {
+        replyWithHtmlMarkup(chatId,"Digitei o nome da categoria que deseja apagar");
+    }
+
     private void replyEsperandoCodigoApagarLocalizacao(long chatId) {
-        replyWithHtmlMarkup(chatId, "Digite o ID da localização que deseja apagar");
+        replyWithHtmlMarkup(chatId, "Digite o nome da localização que deseja apagar");
     }
 
     private void replyEsperandoCodigoApagarBem(long chatId) {
@@ -395,6 +404,9 @@ public class ResponseHandler {
             case ESPERANDO_CODIGO_APAGAR_LOC:
                 deleteCodigoLocalizacao(chatId,name);
                 break;
+            case ESPERANDO_NOME_APAGAR_CAT:
+                deleteNomeCategoria(chatId,name);
+                break;
             case ESPERANDO_CODIGO_APAGAR_BEM:
                 deleteCodigoBem(chatId,name);
                 replyWithHtmlMarkup(chatId,"Bem apagado com Sucesso!\nPara voltar ao menu /start");
@@ -424,6 +436,28 @@ public class ResponseHandler {
                 replyWithBackButton(chatId);
                 break;
         }
+    }
+
+    private void deleteNomeCategoria(long chatId, String name) {
+        System.out.println("func1");
+        System.out.println(name);
+        boolean verify = true;
+        List<Bem> bens = null;
+        System.out.println("criei minha list");
+        bens = bemRepository.findall();
+        for(Bem bem : bens){
+            if(bem.getCategoria().getNome().equals(name)){
+                verify = false;
+            }
+            replyWithHtmlMarkup(chatId, bem.toString());
+        }
+        if(verify){
+            categoriaRepository.deleteCategoriaByName(name);
+            replyWithHtmlMarkup(chatId,"Categoria apagada com sucesso!");
+        }else{
+            replyWithHtmlMarkup(chatId,"Ainda existem bens relacionados a essa Categoria");
+        }
+
     }
 
     private void deleteCodigoLocalizacao(long chatId, String name) {

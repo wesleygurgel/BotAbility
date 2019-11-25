@@ -29,6 +29,7 @@ public class KeyboardFactory {
         List<InlineKeyboardButton> rowInline9 = new ArrayList<>();
         List<InlineKeyboardButton> rowInline10 = new ArrayList<>();
         List<InlineKeyboardButton> rowInline11 = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline12 = new ArrayList<>();
 
 
         rowInline1.add(new InlineKeyboardButton().setText(Constants.CADASTRAR_BEM).setCallbackData(Constants.CADASTRAR_BEM));
@@ -43,15 +44,15 @@ public class KeyboardFactory {
 
         rowInline5.add(new InlineKeyboardButton().setText(Constants.LISTAR_BENS_POR_LOCALIZACAO).setCallbackData(Constants.LISTAR_BENS_POR_LOCALIZACAO));
 
-        rowInline6.add(new InlineKeyboardButton().setText(Constants.LISTAR_CATEGORIAS).setCallbackData(Constants.LISTAR_CATEGORIAS));
 
-        rowInline7.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_CODIGO).setCallbackData(Constants.BUSCAR_BEM_CODIGO));
+        rowInline6.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_CODIGO).setCallbackData(Constants.BUSCAR_BEM_CODIGO));
         rowInline7.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_NOME).setCallbackData(Constants.BUSCAR_BEM_NOME));
 
         rowInline8.add(new InlineKeyboardButton().setText(Constants.BUSCAR_BEM_DESCRICAO).setCallbackData(Constants.BUSCAR_BEM_DESCRICAO));
         rowInline9.add(new InlineKeyboardButton().setText(Constants.GERAR_RELATORIO).setCallbackData(Constants.GERAR_RELATORIO));
         rowInline10.add(new InlineKeyboardButton().setText(Constants.APAGAR_BEM).setCallbackData(Constants.APAGAR_BEM));
         rowInline11.add(new InlineKeyboardButton().setText(Constants.APAGAR_LOCALIZACAO).setCallbackData(Constants.APAGAR_LOCALIZACAO));
+        rowInline12.add(new InlineKeyboardButton().setText(Constants.APAGAR_CATEGORIA).setCallbackData(Constants.APAGAR_CATEGORIA));
 
 
 //        rowInline.add(new InlineKeyboardButton().setText(Constants.TRAINING_TODAY).setCallbackData(Constants.TRAINING_TODAY));
@@ -67,6 +68,7 @@ public class KeyboardFactory {
         rowsInline.add(rowInline9);
         rowsInline.add(rowInline10);
         rowsInline.add(rowInline11);
+        rowsInline.add(rowInline12);
         inlineKeyboard.setKeyboard(rowsInline);
         return inlineKeyboard;
     }

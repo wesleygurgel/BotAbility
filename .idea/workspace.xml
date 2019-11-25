@@ -4,8 +4,22 @@
     <list default="true" id="c209cb41-e959-499a-a1a1-da3ab58f54c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlfredoBot" beforeDir="false" afterPath="$PROJECT_DIR$/AlfredoBot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlfredoBot.wal.0" beforeDir="false" afterPath="$PROJECT_DIR$/AlfredoBot.wal.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChatStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/BemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/BemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CategoriaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/banco.db" beforeDir="false" afterPath="$PROJECT_DIR$/storage/banco.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/bens/.empty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/categorias/.empty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/localizacoes/.empty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/objects/.empty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatStateMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ChatStateMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Constants/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Constants/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/KeyboardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/KeyboardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ResponseHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResponseHandler$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResponseHandler.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

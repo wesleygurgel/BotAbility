@@ -24,4 +24,5 @@ public interface Constants {
     String GERAR_RELATORIO = "Gerar relatório";
     String APAGAR_BEM = "Apagar bem";
     String APAGAR_LOCALIZACAO = "Apagar localizacao";
+    String APAGAR_CATEGORIA = "Apagar categoria";
 }
