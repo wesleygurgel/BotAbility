@@ -30,7 +30,7 @@ public class Conexao {
 
         try {
             // db parameters
-            String url = "jdbc:sqlite:storage/banco.db";
+            String url = "jdbc:sqlite:storage/bancoAlfredo.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
