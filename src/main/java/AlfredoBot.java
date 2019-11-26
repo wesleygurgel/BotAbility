@@ -16,13 +16,13 @@ import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 import static org.telegram.abilitybots.api.util.AbilityUtils.getChatId;
 
-public class PatriBot extends AbilityBot{
+public class AlfredoBot extends AbilityBot{
     private final ResponseHandler responseHandler;
 
     /**
      * Inicializa o bot.
      */
-    public PatriBot(){
+    public AlfredoBot(){
         super(Constants.BOT_TOKEN, Constants.BOT_USERNAME);
         /**
         * Cria o banco e suas tabelas caso não existam.
