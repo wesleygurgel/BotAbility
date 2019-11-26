@@ -74,7 +74,7 @@ public class KeyboardFactory {
     }
 
     /**
-     * Retorna o botão voltar.
+     * Retorna o botão voltar ao menu.
      * @return O teclado com o botão de voltar.
      */
     public static InlineKeyboardMarkup ReplyKeyboardWithBackButton(){
@@ -90,6 +90,7 @@ public class KeyboardFactory {
 
     /**
      * Retorna um teclado com todas as categorias cadastradas no banco de dados em formato de botões.
+     * Usado no momento de criar um Bem.
      * @return O teclado com as categorias.
      */
     public static InlineKeyboardMarkup ReplyKeyboardWithCategorias(){
@@ -109,6 +110,7 @@ public class KeyboardFactory {
     }
     /**
      * Retorna um teclado com todas as localizações cadastradas no banco de dados em formato de botões.
+     * Usado no momento de criar um Bem.
      * @return O teclado com as localizações.
      */
     public static InlineKeyboardMarkup ReplyKeyboardWithLocalizacoes(){

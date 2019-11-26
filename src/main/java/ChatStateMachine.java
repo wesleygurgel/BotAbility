@@ -1,3 +1,6 @@
+/**
+ * Enum contendo os SubComandos, atribui um estado para o BOT.
+ */
 public enum ChatStateMachine {
     AGUARDANDO_COMANDO,
 

@@ -37,13 +37,13 @@ public class AlfredoBot extends AbilityBot{
         bemRepository.criarTabela();
 
         /**
-         * Cria o responseHandler, uma classe externa para tratar as entradas e saídas.
+         * Cria o responseHandler, uma classe externa para tratar as entradas e saídas que o Bot irá receber/enviar.
          */
         responseHandler = new ResponseHandler(sender, db);
     }
 
     /**
-     * Retorna o id do mestre desse robô, configurável em Constants.
+     * Retorna o id do creator desse robô, configurável em Constants.
      * @return
      */
     public int creatorId() {
@@ -73,6 +73,7 @@ public class AlfredoBot extends AbilityBot{
 
     /**
      * Ao receber o comando start do usuário chama a função waitingForCommand no response handler.
+     * Menu principal.
      * @return
      */
     public Ability replyToStart(){

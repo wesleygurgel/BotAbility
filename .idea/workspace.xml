@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c209cb41-e959-499a-a1a1-da3ab58f54c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/PatriBot.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/PatriBot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatriBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlfredoBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AlfredoBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlfredoBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChatStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KeyboardFactory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
