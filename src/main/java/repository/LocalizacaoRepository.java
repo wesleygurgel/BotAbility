@@ -141,6 +141,12 @@ public class LocalizacaoRepository {
         }
     }
 
+    /**
+     * Deleta uma Localização, caso não existam bens relacionados a ela.
+     * Deleta por nome'/'.
+     * @param name
+     * @throws LocalizacaoNotFoundException
+     */
     public void deleteLocalizationByID(String name) throws LocalizacaoNotFoundException{
         String sql = "DELETE FROM localizacao "
                 + "WHERE nome = ?";

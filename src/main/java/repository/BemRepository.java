@@ -312,6 +312,11 @@ public class BemRepository {
     }
 
 
+    /**
+     * Deleta um bem pelo ID'/'.
+     * @param id
+     * @throws BemNotFoundException
+     */
     public void deleteByID(Integer id) throws BemNotFoundException {
         String sql = "DELETE FROM bem "
                 + "WHERE id = ?";

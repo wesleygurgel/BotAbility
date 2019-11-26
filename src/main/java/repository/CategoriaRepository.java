@@ -113,6 +113,11 @@ public class CategoriaRepository {
         }
     }
 
+    /**
+     * Deleta uma categoria, caso não tenham bens relacionados a ela.
+     * Deleta por nome'/'.
+     * @param name
+     */
     public void deleteCategoriaByName(String name) {
         String sql = "DELETE FROM categoria "
                 + "WHERE nome = ?";
