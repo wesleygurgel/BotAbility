@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Classe ResponseHandler
  */
 public class ResponseHandler {
     private final MessageSender sender;
@@ -57,7 +57,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Seta o ChatStateMachine para aguardar o comando inicial.
+     * Limpa o histórico de comandos e seta o ChatStateMachine para aguardar o comando inicial.
      * @param chatId
      */
     public void waitingForCommand(long chatId) {
@@ -180,20 +180,32 @@ public class ResponseHandler {
         }
     }
 
+    /**
+     * Solicita ao usuário a categoria que será removida.
+     * @param chatId
+     */
     private void replyEsperandoNomeApagarCategoria(long chatId) {
-        replyWithHtmlMarkup(chatId,"Digitei o nome da categoria que deseja apagar");
+        replyWithHtmlMarkup(chatId,"Digite o nome da categoria que deseja apagar\n(Atenção para letras Maiúscula e Minúsculas)");
     }
 
+    /**
+     * Solicita ao usuário a localização que será removida.
+     * @param chatId
+     */
     private void replyEsperandoCodigoApagarLocalizacao(long chatId) {
-        replyWithHtmlMarkup(chatId, "Digite o nome da localização que deseja apagar");
+        replyWithHtmlMarkup(chatId, "Digite o nome da localização que deseja apagar\n(Atenção para letras Maiúscula e Minúsculas)");
     }
 
+    /**
+     * Solicita ao usuário o ID do bem que será removido.
+     * @param chatId
+     */
     private void replyEsperandoCodigoApagarBem(long chatId) {
         replyWithHtmlMarkup(chatId, "Digite o ID do bem que deseja apagar");
     }
 
     /**
-     * Manda o relatório para o usuário sobre os bens armazenados no banco.
+     * Manda um relatório para o usuário relativo aos bens armazenados no banco Alfredo.
      * @param chatId
      */
     private void replyGerarRelatorio(long chatId){
@@ -237,7 +249,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Decide e responde ao usuário sobre se ele pode ou não performar o armazenamento de um objeto Bem.
+     * Critérios para cadastramento de um Bem.
      * @param chatId
      */
     private void replyCadastrarBem(long chatId){
@@ -290,7 +302,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Responde com a lista de categorias.
+     * Função de listar categorias.
      * @param chatId
      */
     private void replyListarCategorias(long chatId) {
@@ -303,7 +315,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Responde com a lista de localizações.
+     * Função de listar localizações.
      * @param chatId
      */
     private void replyListarLocalizacoes(long chatId) {
@@ -316,7 +328,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Responde com a lista de bens.
+     * Função de listar bens.
      * @param chatId
      */
     private void replyListarBens(long chatId) {
@@ -329,7 +341,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Salvar categoria com o que o usuário já respondeu.
+     * Salvar categoria com o que o usuário já respondeu, utilizando commandsHistory.
      * @param chatId
      */
     private void salvarObjCategoria(long chatId){
@@ -340,7 +352,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Salvar localização com o que o usuário já respondeu.
+     * Salvar localização com o que o usuário já respondeu, utilizando commandsHistory.
      * @param chatId
      */
     private void salvarObjLocalizacao(long chatId){
@@ -351,7 +363,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Salvar bem com o que o usuário já respondeu.
+     * Salvar bem com o que o usuário já respondeu, utilizando commandsHistory.
      * @param chatId
      */
     private void salvarObjBem(long chatId){
@@ -362,7 +374,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Recebe e trata os textos recebidos pelo Patribot.
+     * Recebe e trata os textos recebidos pelo Alfredo.
      * @param chatId
      * @param name
      */
@@ -438,6 +450,11 @@ public class ResponseHandler {
         }
     }
 
+    /**
+     * Procura por bens que possuam a categoria igual ao parâmetro name, em seguida através de um verificador, remove a categoria.
+     * @param chatId
+     * @param name
+     */
     private void deleteNomeCategoria(long chatId, String name) {
         System.out.println("func1");
         System.out.println(name);
@@ -460,6 +477,11 @@ public class ResponseHandler {
 
     }
 
+    /**
+     * Procura por bens que possuam a localização passada pelo parâmetro name, caso não encontrado nenhum Bem, exceção BemNotFoundException é lançada e a função de remover é chamada no catch.
+     * @param chatId
+     * @param name
+     */
     private void deleteCodigoLocalizacao(long chatId, String name) {
         try {
             try{
@@ -491,6 +513,11 @@ public class ResponseHandler {
         }
     }
 
+    /**
+     * Função para deletar Bem. Recebe o ID em forma de String e chama a função deleteByID em bemRepository, passando a String para Inteiro.
+     * @param chatId
+     * @param unformattedId
+     */
     private void deleteCodigoBem(long chatId, String unformattedId) {
         try {
             try{
@@ -509,7 +536,7 @@ public class ResponseHandler {
     }
 
     /**
-     * Encontrar e setar o BemTemporário dado um ID em string não tratada.
+     * Encontrar e setar o BemTemporário. Recebe o ID em forma de String e chama a função deleteByID em bemRepository, passando a String para Inteiro.
      * @param chatId
      * @param unformattedId
      */
@@ -536,6 +563,7 @@ public class ResponseHandler {
 
     /**
      * Maneira genérica de responder o usuário com texto e marcação html.
+     * Função fornecida pela API do Ability BOT.
      * @param chatId
      * @param text
      */
